@@ -10,9 +10,7 @@ I don't have much data but the results have been okay so far.
 
 ## Predict
 
-Most of the reason to have this historic data is for machine learning. So the attributes that're saved off are tailored to predicting future surf forecasts. Or, at least, what I think are important attributes for that.
-
-Times are in UTC and are ISO format.
+Given a set a swell information, a set of predictions for nearshore wave heights will be returned in the same order as received.
 
 ### Predict Endpoint
 
