@@ -1,14 +1,15 @@
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse
-from fastai.tabular import (
-    load_learner,
-    DataFrame
-)
+from starlette.responses import JSONResponse, PlainTextResponse
+from fastai.tabular import load_learner, DataFrame
 from pathlib import Path
 
 path = Path('ml')
 learn = load_learner(path)
 app = Starlette()
+
+@app.route('/', methods=['GET'])
+async def root(request):
+    return PlainTextResponse('Dude, suh?')
 
 @app.route("/predict", methods=["POST"])
 async def classify_url(request):

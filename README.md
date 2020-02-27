@@ -10,7 +10,7 @@ I don't have much data but the results have been okay so far.
 
 ## Predict
 
-Given a set a swell information, a set of predictions for nearshore wave heights will be returned in the same order as received.
+Given a set of swell data, a set of predictions for nearshore wave heights will be returned in the same order as received.
 
 ### Predict Endpoint
 
