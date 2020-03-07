@@ -1,7 +1,7 @@
 import csv
 
 def main():
-    new_header_row = ['surfline_spot_id', 'name', 'timestamp', 'avg_height', 'swell1_height', 'swell1_period', 'swell1_is_favorable_direction', 'swell2_height', 'swell2_period', 'swell2_is_favorable_direction', 'swell3_height', 'swell3_period', 'swell3_is_favorable_direction']
+    new_header_row = ['surfline_spot_id', 'name', 'timestamp', 'avg_height', 'swell1_height', 'swell1_period', 'swell1_direction', 'swell1_is_favorable_direction', 'swell2_height', 'swell2_period', 'swell2_direction', 'swell2_is_favorable_direction', 'swell3_height', 'swell3_period', 'swell3_direction', 'swell3_is_favorable_direction']
     new_rows = [new_header_row]
 
     # surfline_spot_id,name,favorable_swells,timestamp,am_min_height,am_max_height,pm_min_height,pm_max_height,swell1_height,swell1_period,swell1_direction,swell2_height,swell2_period,swell2_direction,swell3_height,swell3_period,swell3_direction
@@ -20,13 +20,16 @@ def main():
                     average_height(int(row[4]), int(row[5]), int(row[6]), int(row[7])),
                     row[8],
                     row[9],
+                    row[10],
                     is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[10]))),
                     row[11],
                     row[12],
+                    row[13],
                     is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[13]))),
                     row[14],
                     row[15],
-                    is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[16]))),
+                    row[16],
+                    is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[16])))
                 ]
 
                 new_rows.append(new_row)
