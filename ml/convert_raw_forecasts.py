@@ -40,7 +40,7 @@ def main():
 
 def convert_degrees_to_direction(degrees):
     if degrees >= 11.25 and degrees < 33.75:
-        return
+        return 'NNE'
     elif degrees >= 33.75 and degrees < 56.25:
         return 'NE'
     elif degrees >= 56.25 and degrees < 78.75:
