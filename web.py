@@ -7,9 +7,11 @@ path = Path('ml')
 learn = load_learner(path)
 app = Starlette()
 
+
 @app.route('/', methods=['GET'])
 async def root(request):
     return PlainTextResponse('Dude, suh?')
+
 
 @app.route("/predict", methods=["POST"])
 async def classify_url(request):

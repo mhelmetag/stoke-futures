@@ -1,12 +1,43 @@
 import csv
 
+
 def main():
-    new_header_row = ['surfline_spot_id', 'name', 'timestamp', 'avg_height', 'swell1_height', 'swell1_period', 'swell1_direction', 'swell1_is_favorable_direction', 'swell2_height', 'swell2_period', 'swell2_direction', 'swell2_is_favorable_direction', 'swell3_height', 'swell3_period', 'swell3_direction', 'swell3_is_favorable_direction']
+    new_header_row = [
+        'surfline_spot_id',
+        'name',
+        'timestamp',
+        'avg_height',
+        'swell1_height',
+        'swell1_period',
+        'swell1_direction',
+        'swell1_is_favorable_direction',
+        'swell2_height',
+        'swell2_period',
+        'swell2_direction',
+        'swell2_is_favorable_direction',
+        'swell3_height',
+        'swell3_period',
+        'swell3_direction',
+        'swell3_is_favorable_direction',
+        'swell4_height',
+        'swell4_period',
+        'swell4_direction',
+        'swell4_is_favorable_direction',
+        'swell5_height',
+        'swell5_period',
+        'swell5_direction',
+        'swell5_is_favorable_direction',
+        'swell6_height',
+        'swell6_period',
+        'swell6_direction',
+        'swell6_is_favorable_direction'
+    ]
     new_rows = [new_header_row]
 
-    # surfline_spot_id,name,favorable_swells,timestamp,am_min_height,am_max_height,pm_min_height,pm_max_height,swell1_height,swell1_period,swell1_direction,swell2_height,swell2_period,swell2_direction,swell3_height,swell3_period,swell3_direction
+    # surfline_spot_id,name,favorable_swells,timestamp,am_min_height,am_max_height,pm_min_height,pm_max_height,swell1_height,swell1_period,swell1_direction,swell2_height,swell2_period,swell2_direction,swell3_height,swell3_period,swell3_direction,swell4_height,swell4_period,swell4_direction,swell5_height,swell5_period,swell5_direction,swell6_height,swell6_period,swell6_direction
     with open('ml/raw_forecasts.csv') as raw_forecasts_csvfile:
-        reader = csv.reader(raw_forecasts_csvfile, delimiter=',', quotechar='"')
+        reader = csv.reader(raw_forecasts_csvfile,
+                            delimiter=',', quotechar='"')
         header = True
         for row in reader:
             if header:
@@ -17,19 +48,38 @@ def main():
                     row[0],
                     row[1],
                     row[3],
-                    average_height(int(row[4]), int(row[5]), int(row[6]), int(row[7])),
+                    average_height(int(row[4]), int(
+                        row[5]), int(row[6]), int(row[7])),
                     row[8],
                     row[9],
                     row[10],
-                    is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[10]))),
+                    is_favorable_direction(
+                        favorable_swells, convert_degrees_to_direction(float(row[10]))),
                     row[11],
                     row[12],
                     row[13],
-                    is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[13]))),
+                    is_favorable_direction(
+                        favorable_swells, convert_degrees_to_direction(float(row[13]))),
                     row[14],
                     row[15],
                     row[16],
-                    is_favorable_direction(favorable_swells, convert_degrees_to_direction(float(row[16])))
+                    is_favorable_direction(
+                        favorable_swells, convert_degrees_to_direction(float(row[16]))),
+                    row[17],
+                    row[18],
+                    row[19],
+                    is_favorable_direction(
+                        favorable_swells, convert_degrees_to_direction(float(row[19]))),
+                    row[20],
+                    row[21],
+                    row[22],
+                    is_favorable_direction(
+                        favorable_swells, convert_degrees_to_direction(float(row[22]))),
+                    row[23],
+                    row[24],
+                    row[25],
+                    is_favorable_direction(
+                        favorable_swells, convert_degrees_to_direction(float(row[25])))
                 ]
 
                 new_rows.append(new_row)
@@ -37,6 +87,7 @@ def main():
     with open('ml/forecasts.csv', 'w') as forecasts_csvfile:
         writer = csv.writer(forecasts_csvfile)
         writer.writerows(new_rows)
+
 
 def convert_degrees_to_direction(degrees):
     if degrees >= 11.25 and degrees < 33.75:
@@ -72,15 +123,19 @@ def convert_degrees_to_direction(degrees):
     else:
         return 'Unknown'
 
+
 def is_favorable_direction(favorable_swells, direction):
-    favorable_swell_directions = favorable_swells.replace('{', '').replace('}', '').split(',')
+    favorable_swell_directions = favorable_swells.replace(
+        '{', '').replace('}', '').split(',')
 
     if direction in favorable_swell_directions:
         return 'Y'
     else:
         return 'N'
 
+
 def average_height(am_min, am_max, pm_min, pm_max):
     return (am_min + am_max + pm_min + pm_max) / 4
+
 
 main()

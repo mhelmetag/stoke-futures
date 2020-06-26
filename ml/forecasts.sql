@@ -16,7 +16,16 @@ COPY (
         forecasts.swell2_direction,
         forecasts.swell3_height,
         forecasts.swell3_period,
-        forecasts.swell3_direction
+        forecasts.swell3_direction,
+        forecasts.swell4_height,
+        forecasts.swell4_period,
+        forecasts.swell4_direction,
+        forecasts.swell5_height,
+        forecasts.swell5_period,
+        forecasts.swell5_direction,
+        forecasts.swell6_height,
+        forecasts.swell6_period,
+        forecasts.swell6_direction
     FROM forecasts
     JOIN spots
         ON forecasts.spot_id = spots.id
