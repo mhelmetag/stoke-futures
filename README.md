@@ -10,7 +10,7 @@ I don't have much data but the results have been okay so far.
 
 ## Predict
 
-Given a set of swell data, a set of predictions for nearshore wave heights will be returned in the same order as received.
+Given a set of swell data, a set of predictions for nearshore wave heights will be returned in the same order as received. All of the keys are required but they don't have to be indicative of a real value (e.g. at least 0 in cases of floats and "N" for favorability).
 
 ### Predict Endpoint
 
@@ -27,21 +27,27 @@ Given a set of swell data, a set of predictions for nearshore wave heights will 
       "timestamp": "Something",
       "swell1_height": 1.41,
       "swell1_period": 5,
+      "swell1_direction": 0,
       "swell1_is_favorable_direction": "Y",
       "swell2_height": 1.77,
       "swell2_period": 12,
+      "swell2_direction": 0,
       "swell2_is_favorable_direction": "N",
       "swell3_height": 1.25,
       "swell3_period": 12,
+      "swell3_direction": 0,
       "swell3_is_favorable_direction": "Y",
       "swell4_height": 0,
       "swell4_period": 0,
+      "swell4_direction": 0,
       "swell4_is_favorable_direction": "N",
       "swell5_height": 0,
       "swell5_period": 0,
+      "swell5_direction": 0,
       "swell5_is_favorable_direction": "N",
       "swell6_height": 0,
       "swell6_period": 0,
+      "swell6_direction": 0,
       "swell6_is_favorable_direction": "N"
     }
   ]
